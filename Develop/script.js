@@ -58,9 +58,8 @@ function passLowerFunc() {
     return;
   }
   passLower = passLower.toUpperCase()
-
+  
   if (passLower === "YES") {
-    console.log("YES working")
     let i 
     for (i=0; i<passwordLength; i++) {
       randomLowerAlpha += lowerCaseAlphabets[Math.floor(Math.random() * lowerCaseAlphabets.length)]
@@ -69,6 +68,8 @@ function passLowerFunc() {
   } 
   
   if (passLower === "NO") {
+    randomLowerAlpha += ""
+    console.log(randomLowerAlpha)
     passUpperFunc()
   } 
 }
@@ -90,6 +91,7 @@ function passUpperFunc() {
     passSpecialFunc()
   } 
   if (passUpper === "NO") {
+    randomUpperAlphaConcat =  randomUpperAlpha + randomLowerAlpha
     passSpecialFunc()
   } 
 }
@@ -111,6 +113,8 @@ function passSpecialFunc() {
     passNumericFunc()
   } 
   if (passSpecial === "NO") {
+    randomSpecUppLowConcat = randomSpecialAlpha + randomUpperAlphaConcat
+
     passNumericFunc()
   } 
 }
@@ -137,7 +141,7 @@ function passNumericFunc() {
     validatePass()
   } 
   if (passNumeric === "NO") {
-    console.log("No");
+    randomFinal = randomNumeric + randomSpecUppLowConcat
     validatePass()
   } 
 }
